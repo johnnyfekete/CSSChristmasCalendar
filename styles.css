@@ -1,11 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap");
 
 body {
-  background: url(./assets/calendar-bg.jpg) no-repeat top center #8ac1d6;
+  background: url("./assets/calendar-bg.jpg") no-repeat top center #8ac1d6;
   background-size: cover;
   font-family: "Mountains of Christmas", cursive;
   display: flex;
   flex-direction: column;
+}
+
+/* Chrome 66+, Edge 79+, Opera 53+, Android Brower 80+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  @supports (
+    background-image: -webkit-image-set(url("./assets/calendar-bg.webp") 1x)
+  ) {
+    body {
+      background-image: -webkit-image-set(url("./assets/calendar-bg.webp") 1x);
+    }
+  }
+}
+
+/* FF 66+ */
+@supports (flex-basis: max-content) and (-moz-appearance: meterbar) {
+  body {
+    background-image: url("./assets/calendar-bg.webp");
+  }
 }
 
 /* calendar layout */
@@ -130,6 +148,7 @@ body {
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border-radius: 0.4rem;
   display: flex;
   align-items: center;
