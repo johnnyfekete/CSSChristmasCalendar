@@ -186,11 +186,17 @@ body {
 }
 
 footer {
-  margin-bottom: 1rem;
-  margin-left: auto;
-  margin-right: 1rem;
+  margin: 1rem 1rem 1rem auto;
   opacity: 0.5;
   transition: opacity 400ms ease-in-out;
+}
+
+@media only screen and (min-width: 576px) {
+  footer {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
 }
 
 footer:hover {
@@ -206,7 +212,7 @@ footer div {
 }
 
 footer .footer-info {
-  width: 2.8rem;
+  width: 4rem;
   text-align: center;
   font-family: "Times New Roman", serif;
   font-weight: bold;
