@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
 
 body {
   background: url("./assets/calendar-bg.jpg") no-repeat top center #8ac1d6;
@@ -5064,4 +5065,330 @@ footer a {
   top: -5rem;
   left: 1rem;
   border-radius: 50% 50% 50% 0;
+}
+
+/** 
+ * Day 15 - North Pole sign
+ * https://codepen.io/johnnyfekete/pen/MWjmwBY
+ */
+:root {
+  --north-pole-white: #ffffff;
+  --north-pole-white-shadow: #eaf1f7;
+  --north-pole-pole: #c70000;
+  --north-pole-text: #103250;
+}
+
+.north-pole-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  background-color: #66cafb;
+}
+
+.north-pole {
+  position: relative;
+  width: 13rem;
+  height: 20rem;
+  -webkit-transform: scale(0.3) translateX(-4rem);
+  transform: scale(0.3) translateX(-4rem);
+}
+
+@media only screen and (min-width: 576px) {
+  .north-pole {
+    -webkit-transform: scale(0.35) translateX(-2rem);
+    transform: scale(0.35) translateX(-2rem);
+  }
+}
+
+.north-pole .ground {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 2rem;
+  width: 9rem;
+  height: 2rem;
+  background-color: var(--north-pole-white);
+  border-radius: 50% 50% 20% 20% / 50% 50% 40% 40%;
+  overflow: hidden;
+}
+
+.north-pole .ground::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--north-pole-white-shadow);
+  border-radius: 1.5rem;
+  -webkit-transform: rotate(-20deg) skewX(50deg);
+  transform: rotate(-20deg) skewX(50deg);
+  top: 0.3rem;
+  left: 1rem;
+}
+
+.north-pole .ground::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--north-pole-white-shadow);
+  border-radius: 1.5rem;
+  -webkit-transform: rotate(-20deg) skewX(30deg);
+  transform: rotate(-20deg) skewX(30deg);
+  top: 0.6rem;
+  left: 4rem;
+}
+
+.north-pole .pole {
+  position: absolute;
+  z-index: 0;
+  top: 2rem;
+  left: 5.75rem;
+  bottom: 1rem;
+  width: 1.5rem;
+  background: repeating-linear-gradient(
+    -25deg,
+    var(--north-pole-pole),
+    var(--north-pole-pole) 1.2rem,
+    var(--north-pole-white) 1.2rem,
+    var(--north-pole-white) 2.4rem
+  );
+}
+
+.north-pole .pole::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, rgba(0, 0, 0, 0.2)),
+    color-stop(20%, rgba(0, 0, 0, 0)),
+    color-stop(70%, rgba(0, 0, 0, 0)),
+    to(rgba(0, 0, 0, 0.3))
+  );
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.2) 0,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+.north-pole .pole::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0.7rem;
+  right: 0.3rem;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.north-pole .top {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 5.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--north-pole-pole);
+  border-radius: 50%;
+}
+
+.north-pole .top::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2rem;
+  border-bottom: 0.75rem solid var(--north-pole-pole);
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  height: 0;
+  width: 1.5rem;
+}
+
+.north-pole .top::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.4rem;
+  right: 0.3rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.north-pole .sign {
+  position: absolute;
+  box-sizing: border-box;
+  top: 3.5rem;
+  width: 13rem;
+  height: 5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-color: var(--north-pole-white);
+  border-radius: 0.5rem;
+  border: 0.35rem solid var(--north-pole-pole);
+  font-family: "Amatic SC", cursive;
+  font-size: 3rem;
+  color: var(--north-pole-text);
+}
+
+.north-pole .icicle {
+  position: absolute;
+  top: 4.65rem;
+  width: 1rem;
+  height: 2.5rem;
+  overflow: hidden;
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+}
+
+.north-pole .icicle::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -3.5rem;
+  left: -2rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1rem;
+  background-color: var(--north-pole-white);
+  -webkit-transform: scaleX(0.2) rotate(45deg);
+  transform: scaleX(0.2) rotate(45deg);
+}
+
+.north-pole .icicle-1 {
+  left: 1rem;
+  -webkit-transform: scaleY(1.2);
+  transform: scaleY(1.2);
+}
+
+.north-pole .icicle-2 {
+  left: 2.5rem;
+  -webkit-transform: scaleX(0.8);
+  transform: scaleX(0.8);
+}
+
+.north-pole .icicle-3 {
+  left: 3.5rem;
+  -webkit-transform: scaleX(0.4) scaleY(0.7);
+  transform: scaleX(0.4) scaleY(0.7);
+}
+
+.north-pole .icicle-4 {
+  left: 9rem;
+  -webkit-transform: scaleX(0.7) scaleY(0.8);
+  transform: scaleX(0.7) scaleY(0.8);
+}
+
+.north-pole .icicle-5 {
+  left: 11rem;
+  -webkit-transform: scaleX(0.7) scaleY(1.1);
+  transform: scaleX(0.7) scaleY(1.1);
+}
+
+.north-pole .ice-left {
+  position: absolute;
+  width: 5.5rem;
+  height: 0.5rem;
+  top: 4.65rem;
+  left: -0.15rem;
+  overflow: hidden;
+}
+
+.north-pole .ice-left::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5.5rem;
+  height: 2rem;
+  top: -1.5rem;
+  left: -0.25rem;
+  border-radius: 50%;
+  background-color: var(--north-pole-white);
+}
+
+.north-pole .ice-right {
+  position: absolute;
+  z-index: -1;
+  width: 3rem;
+  height: 0.7rem;
+  overflow: hidden;
+  top: 4.65rem;
+  right: -0.2rem;
+}
+
+.north-pole .ice-right::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 3rem;
+  height: 2rem;
+  top: -1.35rem;
+  right: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--north-pole-white);
+}
+
+.north-pole .snow {
+  position: absolute;
+  z-index: 1;
+  top: -1rem;
+  left: -0.7rem;
+  width: 5.7rem;
+  height: 1.5rem;
+  background-color: var(--north-pole-white);
+  border-radius: 50% 50% 20% 20% / 50% 50% 40% 40%;
+  overflow: hidden;
+  -webkit-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+
+.north-pole .snow::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--north-pole-white-shadow);
+  border-radius: 1.5rem;
+  -webkit-transform: rotate(-20deg) skewX(50deg);
+  transform: rotate(-20deg) skewX(50deg);
+  top: 0.3rem;
+  left: 1rem;
+}
+
+.north-pole .snow::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--north-pole-white-shadow);
+  border-radius: 1.5rem;
+  -webkit-transform: rotate(-20deg) skewX(30deg);
+  transform: rotate(-20deg) skewX(30deg);
+  top: 0.2rem;
+  left: 2rem;
 }
