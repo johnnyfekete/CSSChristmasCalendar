@@ -8218,8 +8218,8 @@ footer a {
 
 @media only screen and (min-width: 576px) {
   .christmas-tree {
-    -webkit-animation: christmas-tree-rotate-mobile 10s infinite linear;
-    animation: christmas-tree-rotate-mobile 10s infinite linear;
+    -webkit-animation: christmas-tree-rotate 10s infinite linear;
+    animation: christmas-tree-rotate 10s infinite linear;
   }
 }
 
