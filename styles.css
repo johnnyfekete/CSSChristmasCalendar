@@ -3,29 +3,11 @@
 @import url("https://csschristmascalendar.com/assets/freeserif/font.css");
 
 body {
-  background: url("./assets/calendar-bg.jpg") no-repeat top center #8ac1d6;
+  background: url(https://i.imgur.com/FnJbmo1.jpg) no-repeat top center #8ac1d6;
   background-size: cover;
   font-family: "Mountains of Christmas", cursive;
   display: flex;
   flex-direction: column;
-}
-
-/* Chrome 66+, Edge 79+, Opera 53+, Android Brower 80+ */
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-  @supports (
-    background-image: -webkit-image-set(url("./assets/calendar-bg.webp") 1x)
-  ) {
-    body {
-      background-image: -webkit-image-set(url("./assets/calendar-bg.webp") 1x);
-    }
-  }
-}
-
-/* FF 66+ */
-@supports (flex-basis: max-content) and (-moz-appearance: meterbar) {
-  body {
-    background-image: url("./assets/calendar-bg.webp");
-  }
 }
 
 /* calendar layout */
@@ -149,8 +131,8 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
-  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   border-radius: 0.4rem;
   display: flex;
   align-items: center;
@@ -174,6 +156,87 @@ body {
   transform: rotateY(-180deg);
   border-color: #10303c;
   border-style: solid;
+}
+
+.calendar-grid .title-container {
+  opacity: 0;
+  transform: translateY(-1rem);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1000;
+  bottom: -3.7rem;
+  left: -10rem;
+  right: -10rem;
+  transition: all 400ms ease-in-out;
+}
+
+.calendar-grid :checked ~ .title-container {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.calendar-grid .title-container a {
+  position: relative;
+  display: inline-block;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  background-color: #1d3557;
+  color: #f1faee;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.calendar-grid .title-container a::before {
+  content: "";
+  display: block;
+  border-radius: 0.75rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f1faee 0,
+    #f1faee 0.5rem,
+    #e63946 0.5rem,
+    #e63946 1rem
+  );
+  background-size: 1.44rem 1.44rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: -1;
+  top: -0.5rem;
+  right: -0.5rem;
+  bottom: -0.5rem;
+  left: -0.5rem;
+  -webkit-animation: calendar-item-link 0.6s infinite linear;
+  animation: calendar-item-link 0.6s infinite linear;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.calendar-grid .title-container a:hover::before {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+@-webkit-keyframes calendar-item-link {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1.44rem 0;
+  }
+}
+
+@keyframes calendar-item-link {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1.44rem 0;
+  }
 }
 
 .calendar-grid .inside {
@@ -207,17 +270,11 @@ body {
 }
 
 footer {
-  margin: 1rem 1rem 1rem auto;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: 1rem;
   opacity: 0.5;
   transition: opacity 400ms ease-in-out;
-}
-
-@media only screen and (min-width: 576px) {
-  footer {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-  }
 }
 
 footer:hover {
@@ -233,7 +290,7 @@ footer div {
 }
 
 footer .footer-info {
-  width: 4rem;
+  width: 2.8rem;
   text-align: center;
   font-family: "Times New Roman", serif;
   font-weight: bold;
@@ -274,59 +331,59 @@ footer a {
 /* Calendar day positions and z-indexes */
 .calendar-grid .day-1 {
   grid-area: day1;
-  z-index: 2;
+  z-index: 11;
 }
 .calendar-grid .day-2 {
   grid-area: day2;
-  z-index: 1;
+  z-index: 16;
 }
 .calendar-grid .day-3 {
   grid-area: day3;
-  z-index: 2;
+  z-index: 23;
 }
 .calendar-grid .day-4 {
   grid-area: day4;
-  z-index: 3;
+  z-index: 15;
 }
 .calendar-grid .day-5 {
   grid-area: day5;
-  z-index: 1;
+  z-index: 7;
 }
 .calendar-grid .day-6 {
   grid-area: day6;
-  z-index: 3;
+  z-index: 6;
 }
 .calendar-grid .day-7 {
   grid-area: day7;
-  z-index: 3;
+  z-index: 12;
 }
 .calendar-grid .day-8 {
   grid-area: day8;
-  z-index: 3;
+  z-index: 24;
 }
 .calendar-grid .day-9 {
   grid-area: day9;
-  z-index: 1;
+  z-index: 19;
 }
 .calendar-grid .day-10 {
   grid-area: day10;
-  z-index: 2;
+  z-index: 14;
 }
 .calendar-grid .day-11 {
   grid-area: day11;
-  z-index: 3;
+  z-index: 21;
 }
 .calendar-grid .day-12 {
   grid-area: day12;
-  z-index: 1;
+  z-index: 13;
 }
 .calendar-grid .day-13 {
   grid-area: day13;
-  z-index: 3;
+  z-index: 18;
 }
 .calendar-grid .day-14 {
   grid-area: day14;
-  z-index: 2;
+  z-index: 8;
 }
 .calendar-grid .day-15 {
   grid-area: day15;
@@ -334,15 +391,15 @@ footer a {
 }
 .calendar-grid .day-16 {
   grid-area: day16;
-  z-index: 1;
+  z-index: 4;
 }
 .calendar-grid .day-17 {
   grid-area: day17;
-  z-index: 3;
+  z-index: 9;
 }
 .calendar-grid .day-18 {
   grid-area: day18;
-  z-index: 2;
+  z-index: 20;
 }
 .calendar-grid .day-19 {
   grid-area: day19;
@@ -350,7 +407,7 @@ footer a {
 }
 .calendar-grid .day-20 {
   grid-area: day20;
-  z-index: 1;
+  z-index: 10;
 }
 .calendar-grid .day-21 {
   grid-area: day21;
@@ -358,89 +415,115 @@ footer a {
 }
 .calendar-grid .day-22 {
   grid-area: day22;
-  z-index: 1;
+  z-index: 22;
 }
 .calendar-grid .day-23 {
   grid-area: day23;
-  z-index: 2;
+  z-index: 5;
 }
 .calendar-grid .day-24 {
   grid-area: day24;
-  z-index: 2;
+  z-index: 17;
 }
 
 @media only screen and (min-width: 576px) {
   .calendar-grid .day-1 {
-    z-index: 1;
+    z-index: 16;
   }
   .calendar-grid .day-2 {
-    z-index: 3;
+    z-index: 9;
   }
   .calendar-grid .day-3 {
     z-index: 1;
   }
   .calendar-grid .day-4 {
-    z-index: 5;
+    z-index: 15;
   }
   .calendar-grid .day-5 {
-    z-index: 1;
+    z-index: 22;
   }
   .calendar-grid .day-6 {
-    z-index: 1;
+    z-index: 11;
   }
   .calendar-grid .day-7 {
     z-index: 3;
   }
   .calendar-grid .day-8 {
-    z-index: 5;
+    z-index: 10;
   }
   .calendar-grid .day-9 {
     z-index: 2;
   }
   .calendar-grid .day-10 {
-    z-index: 1;
+    z-index: 7;
   }
   .calendar-grid .day-11 {
-    z-index: 1;
+    z-index: 19;
   }
   .calendar-grid .day-12 {
-    z-index: 3;
+    z-index: 18;
   }
   .calendar-grid .day-13 {
     z-index: 4;
   }
   .calendar-grid .day-14 {
-    z-index: 3;
+    z-index: 13;
   }
   .calendar-grid .day-15 {
-    z-index: 3;
+    z-index: 24;
   }
   .calendar-grid .day-16 {
-    z-index: 3;
+    z-index: 21;
   }
   .calendar-grid .day-17 {
-    z-index: 2;
+    z-index: 23;
   }
   .calendar-grid .day-18 {
-    z-index: 2;
+    z-index: 17;
   }
   .calendar-grid .day-19 {
     z-index: 6;
   }
   .calendar-grid .day-20 {
-    z-index: 2;
+    z-index: 20;
   }
   .calendar-grid .day-21 {
-    z-index: 2;
+    z-index: 8;
   }
   .calendar-grid .day-22 {
-    z-index: 2;
+    z-index: 12;
   }
   .calendar-grid .day-23 {
     z-index: 5;
   }
   .calendar-grid .day-24 {
-    z-index: 4;
+    z-index: 14;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .calendar-grid .day-2 .title-container,
+  .calendar-grid .day-5 .title-container,
+  .calendar-grid .day-9 .title-container,
+  .calendar-grid .day-12 .title-container,
+  .calendar-grid .day-15 .title-container,
+  .calendar-grid .day-16 .title-container,
+  .calendar-grid .day-20 .title-container,
+  .calendar-grid .day-22 .title-container {
+    left: 0;
+    right: auto;
+  }
+
+  .calendar-grid .day-4 .title-container,
+  .calendar-grid .day-6 .title-container,
+  .calendar-grid .day-7 .title-container,
+  .calendar-grid .day-8 .title-container,
+  .calendar-grid .day-11 .title-container,
+  .calendar-grid .day-13 .title-container,
+  .calendar-grid .day-17 .title-container,
+  .calendar-grid .day-19 .title-container {
+    left: auto;
+    right: 0;
   }
 }
 
@@ -452,14 +535,6 @@ footer a {
  * Day 1 - Gingerbread man
  * https://codepen.io/johnnyfekete/pen/ZEpGerj
  */
-:root {
-  --ginger-color: #c5753d;
-  --dark-ginger-color: #974919;
-  --white-color: #f0e5d9;
-  --green-color: #50af52;
-  --red-color: #b22922;
-}
-
 .gingerbread-man-container {
   display: flex;
   align-items: center;
@@ -490,6 +565,12 @@ footer a {
   );
 }
 .gingerbread-man {
+  --ginger-color: #c5753d;
+  --dark-ginger-color: #974919;
+  --white-color: #f0e5d9;
+  --green-color: #50af52;
+  --red-color: #b22922;
+
   transform: scale(0.46) translateY(-6.5rem);
   position: relative;
 }
@@ -675,6 +756,7 @@ footer a {
   display: block;
   font-size: 2rem;
   line-height: 0;
+  -webkit-text-decoration: underline white wavy;
   text-decoration: underline white wavy;
   transform: rotate(90deg) translateX(0.6rem) translateY(-0.5rem);
   transform-origin: center center;
@@ -709,6 +791,7 @@ footer a {
   display: block;
   font-size: 2rem;
   line-height: 0;
+  -webkit-text-decoration: underline white wavy;
   text-decoration: underline white wavy;
   position: absolute;
   bottom: 1.2rem;
@@ -730,6 +813,7 @@ footer a {
   display: block;
   font-size: 1.8rem;
   line-height: 0;
+  -webkit-text-decoration: underline white wavy;
   text-decoration: underline white wavy;
   position: absolute;
   top: 3.3rem;
@@ -773,10 +857,6 @@ footer a {
  * Day 2 - Snowflake
  * https://codepen.io/johnnyfekete/pen/ExgVmaJ
  */
-:root {
-  --snowflake-color: #ffffff;
-}
-
 .snowflake-container {
   display: flex;
   width: 100%;
@@ -796,10 +876,13 @@ footer a {
 }
 
 .snowflake {
+  --snowflake-color: #ffffff;
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform-origin: center center;
+  -webkit-animation: rotation 20s infinite linear;
   animation: rotation 20s infinite linear;
 }
 
@@ -868,12 +951,30 @@ footer a {
   transform: rotate(300deg);
 }
 
+@-webkit-keyframes snowflake-rotation-large {
+  from {
+    transform: rotate(0deg) scale(0.35);
+  }
+  to {
+    transform: rotate(359deg) scale(0.35);
+  }
+}
+
 @keyframes snowflake-rotation-large {
   from {
     transform: rotate(0deg) scale(0.35);
   }
   to {
     transform: rotate(359deg) scale(0.35);
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }
 
@@ -891,15 +992,13 @@ footer a {
  * https://codepen.io/johnnyfekete/pen/BaLjoaV
  */
 
-:root {
+.stocking-container {
   --stocking-background: #b2b09b;
   --stocking-red: #a93f55;
   --stocking-heel: #f2545b;
   --stocking-blue: rgba(25, 50, 60, 0.4);
   --stocking-wool: #f3f7f0;
-}
 
-.stocking-container {
   display: flex;
   width: 100%;
   height: 100%;
@@ -1029,14 +1128,6 @@ footer a {
  * Day 4 - Animated 3D gift box
  * https://codepen.io/johnnyfekete/pen/NWRxmwG
  */
-:root {
-  --gift-box-color: #e63946;
-  --gift-box-edge-color: #590b11;
-  --wrap-color: #f1faee;
-  --wrap-ribbon-color: #c0e4e6;
-  --wrap-top-color: #d8efef;
-}
-
 .gift-box-day {
   background: linear-gradient(
     200deg,
@@ -1064,11 +1155,18 @@ footer a {
 }
 
 .gift-box {
+  --gift-box-color: #e63946;
+  --gift-box-edge-color: #590b11;
+  --wrap-color: #f1faee;
+  --wrap-ribbon-color: #c0e4e6;
+  --wrap-top-color: #d8efef;
+
   width: 200px;
   height: 200px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1s;
+  -webkit-animation: rotation-3d 20s infinite linear;
   animation: rotation-3d 20s infinite linear;
 }
 
@@ -1211,6 +1309,15 @@ footer a {
   transform: rotateX(80deg) translateX(80px) translateY(-80px) translateZ(60px);
 }
 
+@-webkit-keyframes rotation-3d {
+  from {
+    transform: translateZ(-100px) rotateY(50deg) rotateX(-5deg) rotateZ(-30deg);
+  }
+  to {
+    transform: translateZ(-100px) rotateY(409deg) rotateX(-5deg) rotateZ(-30deg);
+  }
+}
+
 @keyframes rotation-3d {
   from {
     transform: translateZ(-100px) rotateY(50deg) rotateX(-5deg) rotateZ(-30deg);
@@ -1224,14 +1331,6 @@ footer a {
  * Day 5 - Sledge in the snow
  * https://codepen.io/johnnyfekete/pen/wvzGoRr
  */
-
-:root {
-  --sledge-runner: #6c757d;
-  --sledge-wood-light: #9c6644;
-  --sledge-wood-dark: #7f5539;
-  --sledge-edge: #2d1e14;
-}
-
 .sledge-container {
   background: linear-gradient(-20deg, #f8f9fa 60%, #3d405b 60%);
   display: flex;
@@ -1240,6 +1339,11 @@ footer a {
 }
 
 .sledge {
+  --sledge-runner: #6c757d;
+  --sledge-wood-light: #9c6644;
+  --sledge-wood-dark: #7f5539;
+  --sledge-edge: #2d1e14;
+
   width: 20rem;
   height: 10rem;
   position: relative;
@@ -1371,16 +1475,6 @@ footer a {
  * Day 6 - Santa
  * https://codepen.io/johnnyfekete/pen/oNzxMPW
  */
-
-:root {
-  --santa-face: #f9dcc4;
-  --santa-beard: #ffffff;
-  --santa-moustache: #e0e0e0;
-  --santa-nose: #ffb5a7;
-  --santa-hat: #e63946;
-  --santa-border: #03071e;
-}
-
 .santa-container {
   display: flex;
   background: repeating-linear-gradient(
@@ -1403,6 +1497,13 @@ footer a {
 }
 
 .santa {
+  --santa-face: #f9dcc4;
+  --santa-beard: #ffffff;
+  --santa-moustache: #e0e0e0;
+  --santa-nose: #ffb5a7;
+  --santa-hat: #e63946;
+  --santa-border: #03071e;
+
   width: 14rem;
   height: 16rem;
   position: relative;
@@ -1743,37 +1844,30 @@ footer a {
  * Day 7 - candle with a flame
  * https://codepen.io/johnnyfekete/pen/ExgyPrb
  */
-:root {
-  --candle-light: #e8eddf;
-  --candle-dark: #e8c2ca;
-  --candle-top: #d1b3c4;
-  --candle-bottom: #b76935;
-  --candle-string: #343434;
-  --candle-flame: #ff9900;
-}
-
 .candle-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   margin: 0;
   background: #000000;
 }
 
 .candle {
+  --candle-light: #e8eddf;
+  --candle-dark: #e8c2ca;
+  --candle-top: #d1b3c4;
+  --candle-bottom: #b76935;
+  --candle-string: #343434;
+  --candle-flame: #ff9900;
+
   position: relative;
   width: 6rem;
   height: 12rem;
-  -webkit-transform: scale(0.35) translateY(-6rem);
   transform: scale(0.35) translateY(-6rem);
 }
 
 @media only screen and (min-width: 576px) {
   .candle {
-    -webkit-transform: scale(0.45) translateY(-2rem);
     transform: scale(0.45) translateY(-2rem);
   }
 }
@@ -1785,13 +1879,6 @@ footer a {
   z-index: 2;
   left: 1.5rem;
   bottom: 2rem;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0, var(--candle-light)),
-    to(var(--candle-dark))
-  );
   background: linear-gradient(
     to right,
     var(--candle-light) 0,
@@ -1822,13 +1909,6 @@ footer a {
   width: 3rem;
   height: 2rem;
   border-radius: 50%;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0, var(--candle-light)),
-    to(var(--candle-dark))
-  );
   background: linear-gradient(
     to right,
     var(--candle-light) 0,
@@ -1841,7 +1921,6 @@ footer a {
   z-index: 3;
   top: 3.5rem;
   left: 3rem;
-  -webkit-transform: scaleY(2);
   transform: scaleY(2);
 }
 
@@ -1850,7 +1929,6 @@ footer a {
   z-index: 1;
   top: 3rem;
   left: 4rem;
-  -webkit-transform: scaleY(2.5);
   transform: scaleY(2.5);
 }
 
@@ -1859,7 +1937,6 @@ footer a {
   z-index: 3;
   top: 2.8rem;
   left: 1rem;
-  -webkit-transform: scaleX(0.5);
   transform: scaleX(0.5);
 }
 
@@ -1872,7 +1949,6 @@ footer a {
   height: 1rem;
   background-color: var(--candle-top);
   border-radius: 0 0.5rem 0.5rem 0.5rem;
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
@@ -1893,7 +1969,6 @@ footer a {
   background-color: var(--candle-string);
   position: absolute;
   border-radius: 1rem;
-  -webkit-transform: rotate(5deg);
   transform: rotate(5deg);
   top: 1.2rem;
   left: 3rem;
@@ -1908,7 +1983,6 @@ footer a {
   width: 4rem;
   height: 4rem;
   margin-top: 120px;
-  -webkit-transform: translate(-66px, -250px) scale(0.33);
   transform: translate(-66px, -250px) scale(0.33);
   mix-blend-mode: screen;
 }
@@ -1918,14 +1992,12 @@ footer a {
   width: 500px;
   height: 500px;
   background: var(--candle-flame);
-  -webkit-filter: blur(20px) contrast(10);
   filter: blur(20px) contrast(10);
   mix-blend-mode: screen;
   border: 250px solid #000;
   border-bottom-color: transparent;
   border-radius: 40%;
   box-sizing: border-box;
-  -webkit-transform: scale(0.4, 1);
   transform: scale(0.4, 1);
 }
 
@@ -1937,7 +2009,6 @@ footer a {
   height: 100px;
   background: black;
   border-radius: 100%;
-  -webkit-filter: blur(1em);
   filter: blur(1em);
 }
 
@@ -3303,22 +3374,18 @@ footer a {
 
 @-webkit-keyframes burning {
   0% {
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-600px);
     transform: translateY(-600px);
   }
 }
 
 @keyframes burning {
   0% {
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-600px);
     transform: translateY(-600px);
   }
 }
@@ -3327,19 +3394,15 @@ footer a {
  * Day 8 - candycane
  * https://codepen.io/johnnyfekete/pen/KKgMLym
  */
-:root {
+.candycane-container {
   --candycane-background: #1a535c;
   --candycane-red: #ff0054;
   --candycane-white: #ffffff;
-}
 
-.candycane-container {
   background-color: var(--candycane-background);
   margin: 0;
   height: 100vh;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
 }
 
@@ -3357,13 +3420,11 @@ footer a {
     var(--candycane-white) 2.1rem
   );
   border-radius: 3rem 3rem 0 0;
-  -webkit-transform: scale(0.35) translateY(-7rem) translateX(0rem);
   transform: scale(0.35) translateY(-7rem) translateX(0rem);
 }
 
 @media only screen and (min-width: 576px) {
   .candycane {
-    -webkit-transform: scale(0.5) translateY(-3rem) translateX(2rem);
     transform: scale(0.5) translateY(-3rem) translateX(2rem);
   }
 }
@@ -3417,35 +3478,27 @@ footer a {
  * Day 9 - hot chocolate with marshmallows
  * https://codepen.io/johnnyfekete/pen/VwKKMKE
  */
-:root {
-  --mug-dark: #727d71;
-  --mug-light: #abc4ab;
-  --mug-coffee: #6c584c;
-  --marshmallow: #d7fdf0;
-  --pink-marshmallow: #ffe4e2;
-}
-
 .hot-chocolate-container {
   background-color: #aa78a6;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   margin: 0;
 }
 
 .hot-chocolate {
-  -webkit-perspective: 400px;
+  --mug-dark: #727d71;
+  --mug-light: #abc4ab;
+  --mug-coffee: #6c584c;
+  --marshmallow: #d7fdf0;
+  --pink-marshmallow: #ffe4e2;
+
   perspective: 400px;
-  -webkit-transform: translateX(3rem) translateY(2rem);
   transform: translateX(3rem) translateY(2rem);
 }
 
 @media only screen and (min-width: 576px) {
   .hot-chocolate {
-    -webkit-transform: scale(0.4);
     transform: scale(0.4);
   }
 }
@@ -3453,9 +3506,7 @@ footer a {
 .hot-chocolate .mug {
   width: 10rem;
   height: 10rem;
-  -webkit-transform: rotateX(-30deg);
   transform: rotateX(-30deg);
-  -webkit-filter: drop-shadow(6px 6px 0 rgba(0, 0, 0, 0.1));
   filter: drop-shadow(6px 6px 0 rgba(0, 0, 0, 0.1));
 }
 
@@ -3507,7 +3558,6 @@ footer a {
   width: 10rem;
   height: 4rem;
   background-color: var(--mug-light);
-  display: -webkit-box;
   display: flex;
 }
 
@@ -3533,14 +3583,6 @@ footer a {
   top: 0;
   left: 0;
   z-index: 2;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 255, 255, 0)),
-    color-stop(33%, rgba(255, 255, 255, 0.3)),
-    to(rgba(255, 255, 255, 0))
-  );
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0) 0%,
@@ -3565,14 +3607,6 @@ footer a {
   height: 3rem;
   position: absolute;
   top: -1.5rem;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 255, 255, 0)),
-    color-stop(33%, rgba(255, 255, 255, 0.3)),
-    to(rgba(255, 255, 255, 0))
-  );
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0) 0%,
@@ -3607,56 +3641,38 @@ footer a {
 }
 
 .hot-chocolate .marshmallow:nth-child(4) {
-  -webkit-transform: scale(0.7) translateX(10.5rem) translateY(-1.8rem)
-    rotate(24deg);
   transform: scale(0.7) translateX(10.5rem) translateY(-1.8rem) rotate(24deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(9) {
-  -webkit-transform: scale(0.6) translateX(9.5rem) translateY(-1rem)
-    rotate(-5deg);
   transform: scale(0.6) translateX(9.5rem) translateY(-1rem) rotate(-5deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(8) {
-  -webkit-transform: scale(0.65) translateX(6rem) translateY(-0.5rem)
-    rotate(20deg);
   transform: scale(0.65) translateX(6rem) translateY(-0.5rem) rotate(20deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(7) {
-  -webkit-transform: scale(0.7) translateX(7.5rem) translateY(-2.6rem)
-    rotate(-30deg);
   transform: scale(0.7) translateX(7.5rem) translateY(-2.6rem) rotate(-30deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(6) {
-  -webkit-transform: scale(0.5) translateX(4.5rem) translateY(-3.5rem)
-    rotate(-8deg);
   transform: scale(0.5) translateX(4.5rem) translateY(-3.5rem) rotate(-8deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(5) {
-  -webkit-transform: scale(0.5) translateX(7rem) translateY(-3.5rem)
-    rotate(55deg);
   transform: scale(0.5) translateX(7rem) translateY(-3.5rem) rotate(55deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(3) {
-  -webkit-transform: scale(0.6) translateX(1.7rem) translateY(-1rem)
-    rotate(10deg);
   transform: scale(0.6) translateX(1.7rem) translateY(-1rem) rotate(10deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(1) {
-  -webkit-transform: scale(0.6) translateX(4rem) translateY(-1rem)
-    rotate(-35deg);
   transform: scale(0.6) translateX(4rem) translateY(-1rem) rotate(-35deg);
 }
 
 .hot-chocolate .marshmallow:nth-child(2) {
-  -webkit-transform: scale(0.65) translateX(0.5rem) translateY(-2.5rem)
-    rotate(-25deg);
   transform: scale(0.65) translateX(0.5rem) translateY(-2.5rem) rotate(-25deg);
 }
 
@@ -3665,35 +3681,28 @@ footer a {
  * https://codepen.io/johnnyfekete/pen/OJRbWJM
  */
 .snowman-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   background: radial-gradient(circle at center, #ffcdb2 40%, #f08080 100%);
   margin: 0;
 }
 
-:root {
+.snowman {
   --snowman: #ffffff;
   --snowman-button: #03071e;
   --snowman-nose: #f72585;
   --snowman-arm: #6d597a;
-}
 
-.snowman {
   font-family: "Verdana", sans-serif;
   width: 10rem;
   height: 21rem;
   position: relative;
-  -webkit-transform: scale(0.32) translateX(-2rem) translateY(-23rem);
   transform: scale(0.32) translateX(-2rem) translateY(-23rem);
 }
 
 @media only screen and (min-width: 576px) {
   .snowman {
-    -webkit-transform: scale(0.38) translateX(-1rem) translateY(-16.3rem);
     transform: scale(0.38) translateX(-1rem) translateY(-16.3rem);
   }
 }
@@ -3705,7 +3714,6 @@ footer a {
   bottom: -1rem;
   left: 0.8rem;
   line-height: 11rem;
-  -webkit-transform: rotate(75deg);
   transform: rotate(75deg);
   text-shadow: 1px -1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -3717,7 +3725,6 @@ footer a {
   bottom: 7.4rem;
   left: 1.5rem;
   line-height: 7rem;
-  -webkit-transform: rotate(-85deg);
   transform: rotate(-85deg);
   text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -3728,7 +3735,6 @@ footer a {
   position: absolute;
   bottom: 11.7rem;
   left: 2.5rem;
-  -webkit-transform: rotate(-95deg);
   transform: rotate(-95deg);
   text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -3743,7 +3749,6 @@ footer a {
   font-size: 1.2rem;
   bottom: 4.3rem;
   left: 4.5rem;
-  -webkit-transform: rotate(-60deg);
   transform: rotate(-60deg);
   text-shadow: -2px 1px 4px;
 }
@@ -3752,7 +3757,6 @@ footer a {
   font-size: 1.2rem;
   bottom: 6.6rem;
   left: 4.6rem;
-  -webkit-transform: rotate(120deg);
   transform: rotate(120deg);
   text-shadow: -2px -2px 4px;
 }
@@ -3761,7 +3765,6 @@ footer a {
   font-size: 1.1rem;
   bottom: 9rem;
   left: 4.6rem;
-  -webkit-transform: rotate(120deg);
   transform: rotate(120deg);
   text-shadow: 1px -2px 4px;
 }
@@ -3770,7 +3773,6 @@ footer a {
   font-size: 1rem;
   bottom: 11rem;
   left: 4.5rem;
-  -webkit-transform: rotate(120deg);
   transform: rotate(120deg);
   text-shadow: 1px -2px 4px;
 }
@@ -3781,7 +3783,6 @@ footer a {
   left: 4rem;
   bottom: 13.3rem;
   font-size: 1.6rem;
-  -webkit-transform: rotate(20deg) scaleX(1) scaleY(2);
   transform: rotate(20deg) scaleX(1) scaleY(2);
   text-shadow: 1px 1px 2px;
 }
@@ -3804,7 +3805,6 @@ footer a {
   color: var(--snowman-button);
   font-size: 0.8rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  -webkit-transform: rotate(20deg);
   transform: rotate(20deg);
 }
 
@@ -3814,7 +3814,6 @@ footer a {
   bottom: 8.5rem;
   left: -0.7rem;
   color: var(--snowman-arm);
-  -webkit-transform: rotate(-120deg) scaleY(2);
   transform: rotate(-120deg) scaleY(2);
 }
 
@@ -3824,7 +3823,6 @@ footer a {
   bottom: 8rem;
   left: 8.5rem;
   color: var(--snowman-arm);
-  -webkit-transform: rotate(120deg) scaleY(2);
   transform: rotate(120deg) scaleY(2);
 }
 
@@ -3836,7 +3834,6 @@ footer a {
   left: 2.4rem;
   width: 5rem;
   height: 4rem;
-  -webkit-transform: rotate(10deg);
   transform: rotate(10deg);
 }
 
@@ -3850,7 +3847,6 @@ footer a {
   position: absolute;
   font-size: 2.4rem;
   top: 1.5rem;
-  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 
@@ -3859,7 +3855,6 @@ footer a {
   font-size: 2.4rem;
   left: 4.9rem;
   top: 1.5rem;
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
@@ -3867,23 +3862,9 @@ footer a {
  * Day 11 - flickering Christmas lights
  * https://codepen.io/johnnyfekete/pen/NWRdKjQ
  */
-:root {
-  --christmas-lights-size: 90rem;
-  --christmas-lights-chord: #6b705c;
-  --christmas-lights-holder: #ced4da;
-  --christmas-lights-bulb-1: #f94144;
-  --christmas-lights-bulb-2: #90be6d;
-  --christmas-lights-bulb-3: #f9c74f;
-  --christmas-lights-bulb-4: #43aa8b;
-  --christmas-lights-bulb-5: #58b4d1;
-}
-
 .christmas-lights-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: start;
   align-items: flex-start;
-  -webkit-box-pack: center;
   justify-content: center;
   background-color: #2b2d42;
   height: 100%;
@@ -3892,14 +3873,21 @@ footer a {
 }
 
 .christmas-lights {
+  --christmas-lights-size: 90rem;
+  --christmas-lights-chord: #6b705c;
+  --christmas-lights-holder: #ced4da;
+  --christmas-lights-bulb-1: #f94144;
+  --christmas-lights-bulb-2: #90be6d;
+  --christmas-lights-bulb-3: #f9c74f;
+  --christmas-lights-bulb-4: #43aa8b;
+  --christmas-lights-bulb-5: #58b4d1;
+
   height: 6rem;
-  -webkit-transform: scale(0.1);
   transform: scale(0.1);
 }
 
 @media only screen and (min-width: 576px) {
   .christmas-lights {
-    -webkit-transform: scale(0.13) translateY(2rem);
     transform: scale(0.13) translateY(2rem);
   }
 }
@@ -3958,7 +3946,6 @@ footer a {
   border-radius: 50%;
   top: 0.5rem;
   left: 0.5rem;
-  -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
   opacity: 0.5;
 }
@@ -3978,7 +3965,6 @@ footer a {
 }
 
 .christmas-lights .bulb.bulb-1 {
-  -webkit-transform: rotate(12deg);
   transform: rotate(12deg);
   background-color: var(--christmas-lights-bulb-1);
   margin-left: -24rem;
@@ -3991,7 +3977,6 @@ footer a {
 }
 
 .christmas-lights .bulb.bulb-2 {
-  -webkit-transform: rotate(6deg);
   transform: rotate(6deg);
   background-color: var(--christmas-lights-bulb-2);
   margin-left: -12rem;
@@ -4008,7 +3993,6 @@ footer a {
 }
 
 .christmas-lights .bulb.bulb-4 {
-  -webkit-transform: rotate(-6deg);
   transform: rotate(-6deg);
   background-color: var(--christmas-lights-bulb-4);
   margin-left: 12rem;
@@ -4027,7 +4011,6 @@ footer a {
 }
 
 .christmas-lights .bulb.bulb-5 {
-  -webkit-transform: rotate(-12deg);
   transform: rotate(-12deg);
   background-color: var(--christmas-lights-bulb-5);
   margin-left: 24rem;
@@ -4214,24 +4197,12 @@ footer a {
 }
 
 /**
- * Day 12 - Polar bear
+ * Day 12 - polar bear
  * https://codepen.io/johnnyfekete/pen/qBaRZXV
  */
-:root {
-  --polar-bear: #ffffff;
-  --polar-bear-highlight: #bfcde0;
-  --polar-bear-face: #1e2019;
-  --polar-bear-scarf: #ce4257;
-  --polar-bear-scarf-end: #bd3146;
-  --polar-bear-scarf-dark: #720026;
-}
-
 .polar-bear-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   height: 100%;
   margin: 0;
@@ -4239,16 +4210,21 @@ footer a {
 }
 
 .polar-bear {
+  --polar-bear: #ffffff;
+  --polar-bear-highlight: #bfcde0;
+  --polar-bear-face: #1e2019;
+  --polar-bear-scarf: #ce4257;
+  --polar-bear-scarf-end: #bd3146;
+  --polar-bear-scarf-dark: #720026;
+
   width: 20rem;
   height: 20rem;
   position: relative;
-  -webkit-transform: scale(0.27) translateX(-7rem);
   transform: scale(0.27) translateX(-7rem);
 }
 
 @media only screen and (min-width: 576px) {
   .polar-bear {
-    -webkit-transform: scale(0.35) translateX(-6rem);
     transform: scale(0.35) translateX(-6rem);
   }
 }
@@ -4303,7 +4279,6 @@ footer a {
   height: 0.8rem;
   background-color: var(--polar-bear-highlight);
   border-radius: 50%;
-  -webkit-transform: rotate(-20deg);
   transform: rotate(-20deg);
 }
 
@@ -4317,18 +4292,15 @@ footer a {
   height: 0.8rem;
   background-color: var(--polar-bear-highlight);
   border-radius: 50%;
-  -webkit-transform: rotate(20deg);
   transform: rotate(20deg);
 }
 
 .polar-bear .polar-bear__foot.polar-bear__foot--left {
-  -webkit-transform: rotate(-10deg);
   transform: rotate(-10deg);
 }
 
 .polar-bear .polar-bear__foot.polar-bear__foot--right {
   left: 10rem;
-  -webkit-transform: rotate(10deg);
   transform: rotate(10deg);
 }
 
@@ -4342,7 +4314,6 @@ footer a {
   box-sizing: border-box;
   border-bottom: 0.3rem solid var(--polar-bear-highlight);
   border-radius: 0 0 50% 50% / 0 0 100% 30%;
-  -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
 }
 
@@ -4356,7 +4327,6 @@ footer a {
   box-sizing: border-box;
   border-bottom: 0.3rem solid var(--polar-bear-highlight);
   border-radius: 0 0 50% 50% / 0 0 30% 100%;
-  -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
 }
 
@@ -4413,7 +4383,6 @@ footer a {
   box-sizing: border-box;
   border-radius: 50%;
   border: 0.5rem solid var(--polar-bear-face);
-  -webkit-transform: scaleY(0.9);
   transform: scaleY(0.9);
 }
 .polar-bear .polar-bear__eye::after {
@@ -4453,7 +4422,6 @@ footer a {
   box-sizing: border-box;
   border-radius: 50%;
   border: 0.5rem solid var(--polar-bear-face);
-  -webkit-transform: scaleY(0.9);
   transform: scaleY(0.9);
 }
 .polar-bear .polar-bear__lip::after {
@@ -4560,7 +4528,6 @@ footer a {
   width: 3rem;
   height: 3rem;
   border-radius: 0 0 0.5rem 0.5rem;
-  -webkit-transform: rotate(20deg);
   transform: rotate(20deg);
 }
 
@@ -4573,7 +4540,6 @@ footer a {
   width: 3rem;
   height: 2.2rem;
   border-radius: 0 0 0.5rem 0.5rem;
-  -webkit-transform: rotate(-20deg);
   transform: rotate(-20deg);
 }
 
@@ -4581,20 +4547,14 @@ footer a {
  * Day 13 - elf hat
  * https://codepen.io/johnnyfekete/pen/JjREvyo
  */
-:root {
+.elf-hat-container {
   --elf-hat-background: #333533;
   --elf-hat-red: #bf0603;
   --elf-hat-red-shadow: #8d0801;
   --elf-hat-gold: #fec601;
   --elf-hat-green: #7cb518;
-}
-
-.elf-hat-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   height: 100%;
   margin: 0;
@@ -4605,13 +4565,11 @@ footer a {
   width: 12rem;
   height: 10rem;
   position: relative;
-  -webkit-transform: scale(0.42) translateX(-2.9rem);
   transform: scale(0.42) translateX(-2.9rem);
 }
 
 @media only screen and (min-width: 576px) {
   .elf-hat {
-    -webkit-transform: scale(0.6) translateX(-1.5rem);
     transform: scale(0.6) translateX(-1.5rem);
   }
 }
@@ -4644,7 +4602,6 @@ footer a {
   height: 12rem;
   background-color: var(--elf-hat-background);
   border-radius: 50% 50% 20% 50% / 10% 10% 50% 0%;
-  -webkit-transform: rotate(-20deg);
   transform: rotate(-20deg);
 }
 
@@ -4657,7 +4614,6 @@ footer a {
   height: 0.6rem;
   background: var(--elf-hat-red-shadow);
   border-radius: 0.4rem;
-  -webkit-transform: rotate(-10deg);
   transform: rotate(-10deg);
 }
 
@@ -4758,7 +4714,6 @@ footer a {
   width: 5rem;
   height: 5rem;
   background-color: var(--elf-hat-green);
-  -webkit-transform: scaleX(0.7) rotate(45deg);
   transform: scaleX(0.7) rotate(45deg);
 }
 
@@ -4804,23 +4759,9 @@ footer a {
  * Day 14 - Christmas tree branch with ornaments
  * https://codepen.io/johnnyfekete/pen/qBarZVj
  */
-:root {
-  --ornaments-branch: #9d6b53;
-  --ornaments-branch-light: #cd9777;
-  --ornament-1: #f83b17;
-  --ornament-1-light: #fb8f7a;
-  --ornament-2: #02c39a;
-  --ornament-2-light: #50fdd8;
-  --ornament-3: #c77dff;
-  --ornament-3-light: #e0aaff;
-}
-
 .ornaments-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   background: radial-gradient(
     circle at 100%,
@@ -4834,16 +4775,23 @@ footer a {
 }
 
 .ornaments {
+  --ornaments-branch: #9d6b53;
+  --ornaments-branch-light: #cd9777;
+  --ornament-1: #f83b17;
+  --ornament-1-light: #fb8f7a;
+  --ornament-2: #02c39a;
+  --ornament-2-light: #50fdd8;
+  --ornament-3: #c77dff;
+  --ornament-3-light: #e0aaff;
+
   position: relative;
   width: 40rem;
   height: 24rem;
-  -webkit-transform: scale(0.15) translateX(-16rem);
   transform: scale(0.15) translateX(-16rem);
 }
 
 @media only screen and (min-width: 576px) {
   .ornaments {
-    -webkit-transform: scale(0.2) translateX(-15rem);
     transform: scale(0.2) translateX(-15rem);
   }
 }
@@ -4858,13 +4806,11 @@ footer a {
 }
 
 .ornaments .branch.branch-1 {
-  -webkit-transform: rotate(-10deg);
   transform: rotate(-10deg);
   top: 7rem;
 }
 
 .branch.branch-2 {
-  -webkit-transform: rotate(-6deg);
   transform: rotate(-6deg);
   top: 11rem;
   left: 12rem;
@@ -4895,7 +4841,6 @@ footer a {
     transparent 0.2rem,
     transparent 0.7rem
   );
-  -webkit-transform: skewX(-45deg);
   transform: skewX(-45deg);
 }
 .ornaments .spikes-lower {
@@ -4911,7 +4856,6 @@ footer a {
     transparent 0.2rem,
     transparent 0.7rem
   );
-  -webkit-transform: skewX(45deg);
   transform: skewX(45deg);
 }
 
@@ -4922,7 +4866,6 @@ footer a {
   width: 6.3rem;
   height: 6.3rem;
   overflow: hidden;
-  -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
   border-radius: 30% 10% 0 10%;
 }
@@ -4944,11 +4887,8 @@ footer a {
 
 .ornaments .ornament {
   position: absolute;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   width: 8rem;
   height: 8rem;
@@ -4966,7 +4906,6 @@ footer a {
   left: 0.5rem;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.5);
-  -webkit-transform: rotate(-60deg);
   transform: rotate(-60deg);
 }
 
@@ -4979,19 +4918,11 @@ footer a {
   top: 0.4rem;
   left: 0.5rem;
   border-radius: 50%;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgba(255, 255, 255, 0.5)),
-    to(transparent)
-  );
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.5),
     transparent 100%
   );
-  -webkit-transform: rotate(-20deg);
   transform: rotate(-20deg);
 }
 
@@ -5031,14 +4962,6 @@ footer a {
   position: absolute;
   width: 2rem;
   height: 1rem;
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(white),
-    color-stop(lightgrey),
-    to(white)
-  );
   background-image: linear-gradient(to right, white, lightgrey, white);
   border-radius: 0.25rem 0.25rem 50% 50% / 0.25rem 0.25rem 10% 10%;
   top: -0.75rem;
@@ -5072,19 +4995,9 @@ footer a {
  * Day 15 - North Pole sign
  * https://codepen.io/johnnyfekete/pen/MWjmwBY
  */
-:root {
-  --north-pole-white: #ffffff;
-  --north-pole-white-shadow: #eaf1f7;
-  --north-pole-pole: #c70000;
-  --north-pole-text: #103250;
-}
-
 .north-pole-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   height: 100%;
   margin: 0;
@@ -5092,16 +5005,19 @@ footer a {
 }
 
 .north-pole {
+  --north-pole-white: #ffffff;
+  --north-pole-white-shadow: #eaf1f7;
+  --north-pole-pole: #c70000;
+  --north-pole-text: #103250;
+
   position: relative;
   width: 13rem;
   height: 20rem;
-  -webkit-transform: scale(0.3) translateX(-4rem);
-  transform: scale(0.3) translateX(-4rem);
+  transform: scale(0.3) translateX(-3rem);
 }
 
 @media only screen and (min-width: 576px) {
   .north-pole {
-    -webkit-transform: scale(0.35) translateX(-2rem);
     transform: scale(0.35) translateX(-2rem);
   }
 }
@@ -5126,7 +5042,6 @@ footer a {
   height: 5rem;
   background-color: var(--north-pole-white-shadow);
   border-radius: 1.5rem;
-  -webkit-transform: rotate(-20deg) skewX(50deg);
   transform: rotate(-20deg) skewX(50deg);
   top: 0.3rem;
   left: 1rem;
@@ -5140,7 +5055,6 @@ footer a {
   height: 5rem;
   background-color: var(--north-pole-white-shadow);
   border-radius: 1.5rem;
-  -webkit-transform: rotate(-20deg) skewX(30deg);
   transform: rotate(-20deg) skewX(30deg);
   top: 0.6rem;
   left: 4rem;
@@ -5170,15 +5084,6 @@ footer a {
   right: 0;
   top: 0;
   bottom: 0;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0, rgba(0, 0, 0, 0.2)),
-    color-stop(20%, rgba(0, 0, 0, 0)),
-    color-stop(70%, rgba(0, 0, 0, 0)),
-    to(rgba(0, 0, 0, 0.3))
-  );
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.2) 0,
@@ -5240,11 +5145,8 @@ footer a {
   top: 3.5rem;
   width: 13rem;
   height: 5rem;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   background-color: var(--north-pole-white);
   border-radius: 0.5rem;
@@ -5260,7 +5162,6 @@ footer a {
   width: 1rem;
   height: 2.5rem;
   overflow: hidden;
-  -webkit-transform-origin: top center;
   transform-origin: top center;
 }
 
@@ -5274,37 +5175,31 @@ footer a {
   height: 5rem;
   border-radius: 1rem;
   background-color: var(--north-pole-white);
-  -webkit-transform: scaleX(0.2) rotate(45deg);
   transform: scaleX(0.2) rotate(45deg);
 }
 
 .north-pole .icicle-1 {
   left: 1rem;
-  -webkit-transform: scaleY(1.2);
   transform: scaleY(1.2);
 }
 
 .north-pole .icicle-2 {
   left: 2.5rem;
-  -webkit-transform: scaleX(0.8);
   transform: scaleX(0.8);
 }
 
 .north-pole .icicle-3 {
   left: 3.5rem;
-  -webkit-transform: scaleX(0.4) scaleY(0.7);
   transform: scaleX(0.4) scaleY(0.7);
 }
 
 .north-pole .icicle-4 {
   left: 9rem;
-  -webkit-transform: scaleX(0.7) scaleY(0.8);
   transform: scaleX(0.7) scaleY(0.8);
 }
 
 .north-pole .icicle-5 {
   left: 11rem;
-  -webkit-transform: scaleX(0.7) scaleY(1.1);
   transform: scaleX(0.7) scaleY(1.1);
 }
 
@@ -5362,7 +5257,6 @@ footer a {
   background-color: var(--north-pole-white);
   border-radius: 50% 50% 20% 20% / 50% 50% 40% 40%;
   overflow: hidden;
-  -webkit-transform: rotate(-5deg);
   transform: rotate(-5deg);
 }
 
@@ -5374,7 +5268,6 @@ footer a {
   height: 5rem;
   background-color: var(--north-pole-white-shadow);
   border-radius: 1.5rem;
-  -webkit-transform: rotate(-20deg) skewX(50deg);
   transform: rotate(-20deg) skewX(50deg);
   top: 0.3rem;
   left: 1rem;
@@ -5388,7 +5281,6 @@ footer a {
   height: 5rem;
   background-color: var(--north-pole-white-shadow);
   border-radius: 1.5rem;
-  -webkit-transform: rotate(-20deg) skewX(30deg);
   transform: rotate(-20deg) skewX(30deg);
   top: 0.2rem;
   left: 2rem;
@@ -5398,38 +5290,31 @@ footer a {
  * Day 16 - ice skate
  * https://codepen.io/johnnyfekete/pen/MWjoPBR
  */
-:root {
-  --skate-blade: #d8e2dc;
-  --skate-gray: #c5d4cb;
-  --skate: #00509d;
-  --skate-dark: #003f88;
-  --skate-brown: #c17c74;
-  --skate-brown-dark: #b15b51;
-}
-
 .skate-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   height: 100%;
   background-color: #ffe66d;
 }
 
 .skate {
+  --skate-blade: #d8e2dc;
+  --skate-gray: #c5d4cb;
+  --skate: #00509d;
+  --skate-dark: #003f88;
+  --skate-brown: #c17c74;
+  --skate-brown-dark: #b15b51;
+
   position: relative;
   z-index: 2;
   width: 16rem;
   height: 16rem;
-  -webkit-transform: scale(0.3) translateX(-4.5rem);
   transform: scale(0.3) translateX(-4.5rem);
 }
 
 @media only screen and (min-width: 576px) {
   .skate {
-    -webkit-transform: scale(0.4) translateX(-3rem);
     transform: scale(0.4) translateX(-3rem);
   }
 }
@@ -5639,9 +5524,7 @@ footer a {
     transparent 5rem,
     var(--skate-dark) 5rem
   );
-  -webkit-transform-origin: right center;
   transform-origin: right center;
-  -webkit-transform: scaleX(0.8);
   transform: scaleX(0.8);
 }
 
@@ -5681,21 +5564,18 @@ footer a {
 .skate .skate-tie.skate-tie--1 {
   top: 4rem;
   left: 5.25rem;
-  -webkit-transform: rotate(-10deg);
   transform: rotate(-10deg);
 }
 
 .skate .skate-tie.skate-tie--2 {
   top: 6rem;
   left: 5.75rem;
-  -webkit-transform: rotate(-20deg);
   transform: rotate(-20deg);
 }
 
 .skate .skate-tie.skate-tie--3 {
   top: 7.6rem;
   left: 7rem;
-  -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
 }
 
@@ -5707,19 +5587,9 @@ footer a {
  * Day 17 - shooting start
  * https://codepen.io/johnnyfekete/pen/vYXZPJj
  */
-:root {
-  --shooting-star: #f4d35e;
-  --shooting-star-tail-1: #9b5de5;
-  --shooting-star-tail-2: #00f5d4;
-  --shooting-star-tail-3: #f15bb5;
-}
-
 .shooting-star-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   background-color: #001122;
   background: repeating-radial-gradient(
@@ -5777,20 +5647,21 @@ footer a {
 }
 
 .shooting-star {
+  --shooting-star: #f4d35e;
+  --shooting-star-tail-1: #9b5de5;
+  --shooting-star-tail-2: #00f5d4;
+  --shooting-star-tail-3: #f15bb5;
+
   position: relative;
   width: 12rem;
   height: 10rem;
-  -webkit-filter: drop-shadow(1px 1px 3px rgba(255, 255, 255, 0.5))
-    drop-shadow(1px -1px 3px rgba(255, 255, 255, 0.5));
   filter: drop-shadow(1px 1px 3px rgba(255, 255, 255, 0.5))
     drop-shadow(1px -1px 3px rgba(255, 255, 255, 0.5));
-  -webkit-transform: scale(0.5) translateX(-0.7rem) translateY(2.5rem);
   transform: scale(0.5) translateX(-0.7rem) translateY(2.5rem);
 }
 
 @media only screen and (min-width: 576px) {
   .shooting-star {
-    -webkit-transform: scale(0.7) translateX(0.5rem) translateY(2.5rem);
     transform: scale(0.7) translateX(0.5rem) translateY(2.5rem);
   }
 }
@@ -5799,18 +5670,14 @@ footer a {
   position: absolute;
   width: 3rem;
   height: 3rem;
-  -webkit-transform-origin: center center;
   transform-origin: center center;
-  -webkit-transform: rotate(-25deg);
   transform: rotate(-25deg);
 }
 
 .shooting-star .shooting-star__star span {
   position: absolute;
   display: block;
-  -webkit-transform-origin: 50% 90%;
   transform-origin: 50% 90%;
-  -webkit-transform: scaleX(0.6);
   transform: scaleX(0.6);
 }
 
@@ -5821,27 +5688,22 @@ footer a {
   height: 2rem;
   background-color: var(--shooting-star);
   border-radius: 0.25rem 0.25rem 1rem 0.25rem;
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
 .shooting-star .shooting-star__star span:nth-child(2) {
-  -webkit-transform: rotate(72deg) scaleX(0.6);
   transform: rotate(72deg) scaleX(0.6);
 }
 
 .shooting-star .shooting-star__star span:nth-child(3) {
-  -webkit-transform: rotate(144deg) scaleX(0.6);
   transform: rotate(144deg) scaleX(0.6);
 }
 
 .shooting-star .shooting-star__star span:nth-child(4) {
-  -webkit-transform: rotate(216deg) scaleX(0.6);
   transform: rotate(216deg) scaleX(0.6);
 }
 
 .shooting-star .shooting-star__star span:nth-child(5) {
-  -webkit-transform: rotate(-72deg) scaleX(0.6);
   transform: rotate(-72deg) scaleX(0.6);
 }
 
@@ -5864,9 +5726,7 @@ footer a {
     var(--shooting-star-tail-3) 8rem,
     transparent 8.05rem
   );
-  -webkit-transform-origin: top left;
   transform-origin: top left;
-  -webkit-transform: scale(0.8) rotate(-10deg) scaleY(0.6);
   transform: scale(0.8) rotate(-10deg) scaleY(0.6);
 }
 
@@ -5879,19 +5739,16 @@ footer a {
 }
 
 .shooting-star .shooting-star__tail span:nth-child(1) {
-  -webkit-transform: translateX(5rem) translateY(8rem);
   transform: translateX(5rem) translateY(8rem);
   background-color: var(--shooting-star-tail-1);
 }
 
 .shooting-star .shooting-star__tail span:nth-child(2) {
-  -webkit-transform: translateX(6rem) translateY(8rem);
   transform: translateX(6rem) translateY(8rem);
   background-color: var(--shooting-star-tail-2);
 }
 
 .shooting-star .shooting-star__tail span:nth-child(3) {
-  -webkit-transform: translateX(7rem) translateY(8rem);
   transform: translateX(7rem) translateY(8rem);
   background-color: var(--shooting-star-tail-3);
 }
@@ -5900,22 +5757,9 @@ footer a {
  * Day 18 - animated drum
  * https://codepen.io/johnnyfekete/pen/xxErNmw
  */
-:root {
-  --drum-yellow: #e9c46a;
-  --drum-dark-yellow: #cf9b1f;
-  --drum-light-red: #ef233c;
-  --drum-dark-red: #6a040f;
-  --drum-white: #edf6f9;
-  --drum-top: #cec2ab;
-  --drum-stick: #887880;
-}
-
 .drum-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   background-color: #bee3db;
   height: 100%;
@@ -5923,16 +5767,21 @@ footer a {
 }
 
 .drum {
+  --drum-yellow: #e9c46a;
+  --drum-dark-yellow: #cf9b1f;
+  --drum-light-red: #ef233c;
+  --drum-dark-red: #6a040f;
+  --drum-white: #edf6f9;
+  --drum-top: #cec2ab;
+  --drum-stick: #887880;
   position: relative;
   width: 16rem;
   height: 17rem;
-  -webkit-transform: scale(0.22) translateX(-5.5rem) rotate(5deg);
-  transform: scale(0.22) translateX(-5.5rem) rotate(5deg);
+  transform: scale(0.22) translateX(-5rem) rotate(5deg);
 }
 
 @media only screen and (min-width: 576px) {
   .drum {
-    -webkit-transform: scale(0.3) translateX(-5.5rem) rotate(5deg);
     transform: scale(0.3) translateX(-5.5rem) rotate(5deg);
   }
 }
@@ -6019,7 +5868,6 @@ footer a {
 }
 
 .drum .side .pattern.pattern-1 {
-  -webkit-transform: translateX(1.6rem) translateY(0.6rem) rotate(-20deg);
   transform: translateX(1.6rem) translateY(0.6rem) rotate(-20deg);
 }
 .drum .side .pattern.pattern-1::after {
@@ -6027,7 +5875,6 @@ footer a {
 }
 
 .drum .side .pattern.pattern-2 {
-  -webkit-transform: translateX(4.4rem) translateY(0.6rem) rotate(20deg);
   transform: translateX(4.4rem) translateY(0.6rem) rotate(20deg);
 }
 .drum .side .pattern.pattern-2::after {
@@ -6036,7 +5883,6 @@ footer a {
 }
 
 .drum .side .pattern.pattern-3 {
-  -webkit-transform: translateX(6.3rem) translateY(0.6rem) rotate(-20deg);
   transform: translateX(6.3rem) translateY(0.6rem) rotate(-20deg);
 }
 .drum .side .pattern.pattern-3::after {
@@ -6045,7 +5891,6 @@ footer a {
 }
 
 .drum .side .pattern.pattern-4 {
-  -webkit-transform: translateX(9.3rem) translateY(0.6rem) rotate(20deg);
   transform: translateX(9.3rem) translateY(0.6rem) rotate(20deg);
 }
 .drum .side .pattern.pattern-4::after {
@@ -6054,7 +5899,6 @@ footer a {
 }
 
 .drum .side .pattern.pattern-5 {
-  -webkit-transform: translateX(11.3rem) translateY(0.6rem) rotate(-20deg);
   transform: translateX(11.3rem) translateY(0.6rem) rotate(-20deg);
 }
 .drum .side .pattern.pattern-5::after {
@@ -6063,7 +5907,6 @@ footer a {
 }
 
 .drum .side .pattern.pattern-6 {
-  -webkit-transform: translateX(14rem) translateY(0.6rem) rotate(20deg);
   transform: translateX(14rem) translateY(0.6rem) rotate(20deg);
 }
 .drum .side .pattern.pattern-6::before {
@@ -6115,7 +5958,6 @@ footer a {
   height: 0.6rem;
   background: var(--drum-stick);
   border-radius: 50% 20% 20% 50% / 50%;
-  -webkit-transform-origin: 90% 50%;
   transform-origin: 90% 50%;
 }
 
@@ -6132,7 +5974,6 @@ footer a {
 .drum .drum-stick.drum-stick--left {
   left: -14rem;
   top: -1rem;
-  -webkit-transform: rotate(-170deg);
   transform: rotate(-170deg);
   -webkit-animation: anim-drum-stick-left 0.3s infinite;
   animation: anim-drum-stick-left 0.3s infinite;
@@ -6141,7 +5982,6 @@ footer a {
 .drum .drum-stick.drum-stick--right {
   left: 9rem;
   top: -1rem;
-  -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
   -webkit-animation: anim-drum-stick-right 0.3s infinite;
   animation: anim-drum-stick-right 0.3s infinite;
@@ -6176,47 +6016,38 @@ footer a {
 
 @-webkit-keyframes anim-drum-stick-left {
   0% {
-    -webkit-transform: rotate(-170deg) translateX(1rem);
     transform: rotate(-170deg) translateX(1rem);
   }
   50% {
-    -webkit-transform: rotate(-150deg) translateX(0);
     transform: rotate(-150deg) translateX(0);
   }
   100% {
-    -webkit-transform: rotate(-170deg) translateX(1rem);
     transform: rotate(-170deg) translateX(1rem);
   }
 }
 
 @keyframes anim-drum-stick-left {
   0% {
-    -webkit-transform: rotate(-170deg) translateX(1rem);
     transform: rotate(-170deg) translateX(1rem);
   }
   50% {
-    -webkit-transform: rotate(-150deg) translateX(0);
     transform: rotate(-150deg) translateX(0);
   }
   100% {
-    -webkit-transform: rotate(-170deg) translateX(1rem);
     transform: rotate(-170deg) translateX(1rem);
   }
 }
 
 @-webkit-keyframes anim-drum-shadow-left {
   0% {
-    -webkit-transform: scale(1.6);
     transform: scale(1.6);
     opacity: 0.3;
   }
   50% {
-    -webkit-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 1;
   }
   100% {
-    -webkit-transform: scale(1.6);
     transform: scale(1.6);
     opacity: 0.3;
   }
@@ -6224,17 +6055,14 @@ footer a {
 
 @keyframes anim-drum-shadow-left {
   0% {
-    -webkit-transform: scale(1.6);
     transform: scale(1.6);
     opacity: 0.3;
   }
   50% {
-    -webkit-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 1;
   }
   100% {
-    -webkit-transform: scale(1.6);
     transform: scale(1.6);
     opacity: 0.3;
   }
@@ -6242,47 +6070,38 @@ footer a {
 
 @-webkit-keyframes anim-drum-stick-right {
   0% {
-    -webkit-transform: rotate(-30deg) translateX(0);
     transform: rotate(-30deg) translateX(0);
   }
   50% {
-    -webkit-transform: rotate(-10deg) translateX(1rem);
     transform: rotate(-10deg) translateX(1rem);
   }
   100% {
-    -webkit-transform: rotate(-30deg) translateX(0);
     transform: rotate(-30deg) translateX(0);
   }
 }
 
 @keyframes anim-drum-stick-right {
   0% {
-    -webkit-transform: rotate(-30deg) translateX(0);
     transform: rotate(-30deg) translateX(0);
   }
   50% {
-    -webkit-transform: rotate(-10deg) translateX(1rem);
     transform: rotate(-10deg) translateX(1rem);
   }
   100% {
-    -webkit-transform: rotate(-30deg) translateX(0);
     transform: rotate(-30deg) translateX(0);
   }
 }
 
 @-webkit-keyframes anim-drum-shadow-right {
   0% {
-    -webkit-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 1;
   }
   50% {
-    -webkit-transform: scale(1.6);
     transform: scale(1.6);
     opacity: 0.3;
   }
   100% {
-    -webkit-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 1;
   }
@@ -6290,17 +6109,14 @@ footer a {
 
 @keyframes anim-drum-shadow-right {
   0% {
-    -webkit-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 1;
   }
   50% {
-    -webkit-transform: scale(1.6);
     transform: scale(1.6);
     opacity: 0.3;
   }
   100% {
-    -webkit-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 1;
   }
@@ -6310,37 +6126,28 @@ footer a {
  * Day 19 - animated Christmas sparkler
  * https://codepen.io/johnnyfekete/pen/MWjveNj
  */
-:root {
-  --sparkler-stick: #dee2e6;
-  --sparkler-gun-powder: #706677;
-  --sparkler-burnt: #252525;
-  --sparkler-ember: #ff9f1c;
-}
-
 .sparkler-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   background-color: #577399;
   height: 100%;
 }
 
 .sparkler {
+  --sparkler-stick: #dee2e6;
+  --sparkler-gun-powder: #706677;
+  --sparkler-burnt: #252525;
+  --sparkler-ember: #ff9f1c;
+
   position: relative;
   margin-top: 2rem;
   height: 16rem;
-  -webkit-transform: scale(0.4) translateX(-0.5rem) translateY(-1.5rem)
-    rotate(55deg);
   transform: scale(0.4) translateX(-0.5rem) translateY(-1.5rem) rotate(55deg);
 }
 
 @media only screen and (min-width: 576px) {
   .sparkler {
-    -webkit-transform: scale(0.5) translateX(-0.5rem) translateY(-1.5rem)
-      rotate(55deg);
     transform: scale(0.5) translateX(-0.5rem) translateY(-1.5rem) rotate(55deg);
   }
 }
@@ -6372,13 +6179,6 @@ footer a {
   bottom: 0;
   width: 0.4rem;
   height: 10rem;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0.3rem, var(--sparkler-ember)),
-    color-stop(0.4rem, var(--sparkler-gun-powder))
-  );
   background: linear-gradient(
     to bottom,
     var(--sparkler-ember) 0.3rem,
@@ -6416,7 +6216,6 @@ footer a {
   height: 0.1rem;
   bottom: 4.3rem;
   left: 4.35rem;
-  -webkit-transform: rotate(var(--spark-rotate));
   transform: rotate(var(--spark-rotate));
 }
 
@@ -6430,7 +6229,6 @@ footer a {
   border-radius: 0.1rem;
   opacity: 0;
   background-color: white;
-  -webkit-transform-origin: bottom center;
   transform-origin: bottom center;
   -webkit-animation: sparkler-sparkle 0.5s infinite linear;
   animation: sparkler-sparkle 0.5s infinite linear;
@@ -6476,104 +6274,84 @@ footer a {
 
 @-webkit-keyframes sparkler-light-pulsating {
   0% {
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
   25% {
-    -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
   75% {
-    -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
   100% {
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
 
 @keyframes sparkler-light-pulsating {
   0% {
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
   25% {
-    -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
   75% {
-    -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
   100% {
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
 
 @-webkit-keyframes sparkler-sparkle {
   0% {
-    -webkit-transform: translateY(-0.5rem) scaleY(0.25);
     transform: translateY(-0.5rem) scaleY(0.25);
     opacity: 0;
   }
   10% {
-    -webkit-transform: translateY(-1rem) scaleY(0.5);
     transform: translateY(-1rem) scaleY(0.5);
     opacity: 0.35;
   }
   30% {
-    -webkit-transform: translateY(-2rem) scaleY(0.5);
     transform: translateY(-2rem) scaleY(0.5);
     opacity: 0.7;
   }
   50% {
-    -webkit-transform: translateY(-4rem) scaleY(1.5);
     transform: translateY(-4rem) scaleY(1.5);
     opacity: 0.7;
   }
   51% {
     opacity: 0;
-    -webkit-transform: translateY(-4rem) scaleY(1);
     transform: translateY(-4rem) scaleY(1);
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(0) scaleY(0.25);
     transform: translateY(0) scaleY(0.25);
   }
 }
 
 @keyframes sparkler-sparkle {
   0% {
-    -webkit-transform: translateY(-0.5rem) scaleY(0.25);
     transform: translateY(-0.5rem) scaleY(0.25);
     opacity: 0;
   }
   10% {
-    -webkit-transform: translateY(-1rem) scaleY(0.5);
     transform: translateY(-1rem) scaleY(0.5);
     opacity: 0.35;
   }
   30% {
-    -webkit-transform: translateY(-2rem) scaleY(0.5);
     transform: translateY(-2rem) scaleY(0.5);
     opacity: 0.7;
   }
   50% {
-    -webkit-transform: translateY(-4rem) scaleY(1.5);
     transform: translateY(-4rem) scaleY(1.5);
     opacity: 0.7;
   }
   51% {
     opacity: 0;
-    -webkit-transform: translateY(-4rem) scaleY(1);
     transform: translateY(-4rem) scaleY(1);
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(0) scaleY(0.25);
     transform: translateY(0) scaleY(0.25);
   }
 }
@@ -6582,24 +6360,19 @@ footer a {
  * Day 20 - pom hat with a single div
  * https://codepen.io/johnnyfekete/pen/KKgvrJK
  */
-:root {
-  --pom-hat-pink: #f28482;
-  --pom-hat-green: #84a59d;
-  --pom-hat-purple: #6d597a;
-}
-
 .pom-hat-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   background-color: #b8f2e6;
   height: 100%;
 }
 
 .pom-hat {
+  --pom-hat-pink: #f28482;
+  --pom-hat-green: #84a59d;
+  --pom-hat-purple: #6d597a;
+
   position: absolute;
   width: 8rem;
   height: 10rem;
@@ -6611,7 +6384,6 @@ footer a {
     linear-gradient(45deg, var(--pom-hat-green) 25%, transparent 25%);
   background-size: 1rem 1rem;
   background-color: var(--pom-hat-pink);
-  -webkit-transform: scale(0.5) translateY(1rem);
   transform: scale(0.5) translateY(1rem);
 }
 
@@ -6621,24 +6393,6 @@ footer a {
   width: 8rem;
   height: 10rem;
   border-radius: 4rem 4rem 0 0;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0, var(--pom-hat-pink)),
-    color-stop(1.8rem, var(--pom-hat-pink)),
-    color-stop(1.8rem, var(--pom-hat-green)),
-    color-stop(2.1rem, var(--pom-hat-green)),
-    color-stop(2.1rem, var(--pom-hat-pink)),
-    color-stop(2.6rem, var(--pom-hat-pink)),
-    color-stop(2.6rem, var(--pom-hat-green)),
-    color-stop(2.9rem, var(--pom-hat-green)),
-    color-stop(2.9rem, var(--pom-hat-pink)),
-    color-stop(4.5rem, var(--pom-hat-pink)),
-    color-stop(4.5rem, transparent),
-    color-stop(6.5rem, transparent),
-    color-stop(6.5rem, var(--pom-hat-pink))
-  );
   background: linear-gradient(
     to bottom,
     var(--pom-hat-pink) 0,
@@ -6819,20 +6573,9 @@ footer a {
  * Day 21 - toy train
  * https://codepen.io/johnnyfekete/pen/jOMGMJy
  */
-
-:root {
-  --toy-train-red: #f45b69;
-  --toy-train-blue: #456990;
-  --toy-train-gold: #edaa41;
-  --toy-train-gray: #ababab;
-}
-
 .toy-train-container {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   min-height: 100%;
   margin: 0;
@@ -6840,16 +6583,19 @@ footer a {
 }
 
 .toy-train {
+  --toy-train-red: #f45b69;
+  --toy-train-blue: #456990;
+  --toy-train-gold: #edaa41;
+  --toy-train-gray: #ababab;
+
   width: 39rem;
   height: 20rem;
   position: relative;
-  -webkit-transform: scale(0.15) translateX(-16rem) translateY(-45rem);
   transform: scale(0.15) translateX(-16rem) translateY(-45rem);
 }
 
 @media only screen and (min-width: 576px) {
   .toy-train {
-    -webkit-transform: scale(0.2) translateX(-15rem) translateY(-26rem);
     transform: scale(0.2) translateX(-15rem) translateY(-26rem);
   }
 }
@@ -6996,9 +6742,7 @@ footer a {
 
 .toy-train .car-cabin {
   position: absolute;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
   justify-content: space-around;
   z-index: 4;
@@ -7109,7 +6853,6 @@ footer a {
 .toy-train .bumper.bumper--front {
   left: -2rem;
   right: auto;
-  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
@@ -7147,9 +6890,7 @@ footer a {
   height: 0.75rem;
   border-radius: 0.5rem;
   background-color: var(--toy-train-red);
-  -webkit-transform-origin: 0.375rem 0.375rem;
   transform-origin: 0.375rem 0.375rem;
-  -webkit-transform: rotate(-50deg);
   transform: rotate(-50deg);
 }
 
@@ -7163,9 +6904,7 @@ footer a {
   height: 0.75rem;
   border-radius: 0.5rem;
   background-color: var(--toy-train-red);
-  -webkit-transform-origin: 0.375rem 0.375rem;
   transform-origin: 0.375rem 0.375rem;
-  -webkit-transform: rotate(-70deg);
   transform: rotate(-70deg);
 }
 
@@ -7239,169 +6978,134 @@ footer a {
 
 @-webkit-keyframes train-wheel-1 {
   0% {
-    -webkit-transform: rotate(400deg);
     transform: rotate(400deg);
   }
 
   100% {
-    -webkit-transform: rotate(40deg);
     transform: rotate(40deg);
   }
 }
 
 @keyframes train-wheel-1 {
   0% {
-    -webkit-transform: rotate(400deg);
     transform: rotate(400deg);
   }
 
   100% {
-    -webkit-transform: rotate(40deg);
     transform: rotate(40deg);
   }
 }
 
 @-webkit-keyframes train-wheel-2 {
   0% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 
   100% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 }
 
 @keyframes train-wheel-2 {
   0% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 
   100% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 }
 
 @-webkit-keyframes train-shake {
   0% {
-    -webkit-transform: translate(0.1rem, 0.1rem);
     transform: translate(0.1rem, 0.1rem);
   }
   10% {
-    -webkit-transform: translate(-0.1rem, 0rem);
     transform: translate(-0.1rem, 0rem);
   }
   20% {
-    -webkit-transform: translate(0rem, -0.1rem);
     transform: translate(0rem, -0.1rem);
   }
   30% {
-    -webkit-transform: translate(0.1rem, -0.1rem);
     transform: translate(0.1rem, -0.1rem);
   }
   40% {
-    -webkit-transform: translate(-0.1rem, 0rem);
     transform: translate(-0.1rem, 0rem);
   }
   50% {
-    -webkit-transform: translate(0rem, -0.1rem);
     transform: translate(0rem, -0.1rem);
   }
   60% {
-    -webkit-transform: translate(-0.1rem, 0rem);
     transform: translate(-0.1rem, 0rem);
   }
   70% {
-    -webkit-transform: translate(0rem, -0.1rem);
     transform: translate(0rem, -0.1rem);
   }
   80% {
-    -webkit-transform: translate(-0.1rem, 0.1rem);
     transform: translate(-0.1rem, 0.1rem);
   }
   90% {
-    -webkit-transform: translate(-0.1rem, -0.1rem);
     transform: translate(-0.1rem, -0.1rem);
   }
   100% {
-    -webkit-transform: translate(0.1rem, 0.1rem);
     transform: translate(0.1rem, 0.1rem);
   }
 }
 
 @keyframes train-shake {
   0% {
-    -webkit-transform: translate(0.1rem, 0.1rem);
     transform: translate(0.1rem, 0.1rem);
   }
   10% {
-    -webkit-transform: translate(-0.1rem, 0rem);
     transform: translate(-0.1rem, 0rem);
   }
   20% {
-    -webkit-transform: translate(0rem, -0.1rem);
     transform: translate(0rem, -0.1rem);
   }
   30% {
-    -webkit-transform: translate(0.1rem, -0.1rem);
     transform: translate(0.1rem, -0.1rem);
   }
   40% {
-    -webkit-transform: translate(-0.1rem, 0rem);
     transform: translate(-0.1rem, 0rem);
   }
   50% {
-    -webkit-transform: translate(0rem, -0.1rem);
     transform: translate(0rem, -0.1rem);
   }
   60% {
-    -webkit-transform: translate(-0.1rem, 0rem);
     transform: translate(-0.1rem, 0rem);
   }
   70% {
-    -webkit-transform: translate(0rem, -0.1rem);
     transform: translate(0rem, -0.1rem);
   }
   80% {
-    -webkit-transform: translate(-0.1rem, 0.1rem);
     transform: translate(-0.1rem, 0.1rem);
   }
   90% {
-    -webkit-transform: translate(-0.1rem, -0.1rem);
     transform: translate(-0.1rem, -0.1rem);
   }
   100% {
-    -webkit-transform: translate(0.1rem, 0.1rem);
     transform: translate(0.1rem, 0.1rem);
   }
 }
 
 @-webkit-keyframes train-smoke {
   0% {
-    -webkit-transform: translate(-1.5rem, 0.5rem) scale(0.5);
     transform: translate(-1.5rem, 0.5rem) scale(0.5);
     opacity: 0;
   }
   10% {
-    -webkit-transform: translate(0rem, 0rem) scale(0.7);
     transform: translate(0rem, 0rem) scale(0.7);
     opacity: 0.5;
   }
   20% {
-    -webkit-transform: translate(2rem, -1rem) scale(1);
     transform: translate(2rem, -1rem) scale(1);
     opacity: 1;
   }
   70% {
-    -webkit-transform: translate(15rem, -4rem) scale(1.3);
     transform: translate(15rem, -4rem) scale(1.3);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translate(20rem, -6rem) scale(1.5);
     transform: translate(20rem, -6rem) scale(1.5);
     opacity: 0;
   }
@@ -7409,27 +7113,22 @@ footer a {
 
 @keyframes train-smoke {
   0% {
-    -webkit-transform: translate(-1.5rem, 0.5rem) scale(0.5);
     transform: translate(-1.5rem, 0.5rem) scale(0.5);
     opacity: 0;
   }
   10% {
-    -webkit-transform: translate(0rem, 0rem) scale(0.7);
     transform: translate(0rem, 0rem) scale(0.7);
     opacity: 0.5;
   }
   20% {
-    -webkit-transform: translate(2rem, -1rem) scale(1);
     transform: translate(2rem, -1rem) scale(1);
     opacity: 1;
   }
   70% {
-    -webkit-transform: translate(15rem, -4rem) scale(1.3);
     transform: translate(15rem, -4rem) scale(1.3);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translate(20rem, -6rem) scale(1.5);
     transform: translate(20rem, -6rem) scale(1.5);
     opacity: 0;
   }
@@ -7528,6 +7227,7 @@ footer a {
   font-size: 13rem;
   height: 13rem;
   margin-right: 2rem;
+  min-width: 5.33rem;
 
   -webkit-animation: jingle-bells-note 0.5s linear;
 
@@ -7840,6 +7540,16 @@ footer a {
 }
 
 .reindeer {
+  --rudolph-antler: #ddb892;
+  --rudolph-body: #9d6b53;
+  --rudolph-body-dark: #946651;
+  --rudolph-nose: #8c6351;
+  --rudolph-nose-red: #690500;
+  --rudolph-eye: #432818;
+  --rudolph-ear: #774936;
+  --rudolph-belly: #ede0d4;
+  --rudolph-leg: #432818;
+
   position: relative;
   width: 16rem;
   height: 16rem;
@@ -7858,7 +7568,7 @@ footer a {
   width: 5rem;
   height: 0.7rem;
   border-radius: 0.35rem;
-  background-color: #ddb892;
+  background-color: var(--rudolph-antler);
   transform-origin: 5.7rem 0;
   transform: translate(-1rem, 2.5rem) rotate(20deg);
 }
@@ -7877,8 +7587,8 @@ footer a {
     circle at 100% 0,
     transparent,
     transparent 2.3rem,
-    #ddb892 2.3rem,
-    #ddb892 3rem,
+    var(--rudolph-antler) 2.3rem,
+    var(--rudolph-antler) 3rem,
     transparent 3rem
   );
 }
@@ -7892,8 +7602,8 @@ footer a {
     circle at 100% 0,
     transparent,
     transparent 1.7rem,
-    #ddb892 1.7rem,
-    #ddb892 2.4rem,
+    var(--rudolph-antler) 1.7rem,
+    var(--rudolph-antler) 2.4rem,
     transparent 2.4rem
   );
 }
@@ -7908,8 +7618,8 @@ footer a {
     circle at 100% 0,
     transparent,
     transparent 1.3rem,
-    #ddb892 1.3rem,
-    #ddb892 2rem,
+    var(--rudolph-antler) 1.3rem,
+    var(--rudolph-antler) 2rem,
     transparent 2rem
   );
 }
@@ -7921,7 +7631,7 @@ footer a {
   top: -0.35rem;
   width: 0.7rem;
   height: 0.7rem;
-  background-color: #ddb892;
+  background-color: var(--rudolph-antler);
   border-radius: 0.35rem;
 }
 
@@ -7938,7 +7648,7 @@ footer a {
   position: absolute;
   width: 6rem;
   height: 6rem;
-  background: #9d6b53;
+  background: var(--rudolph-body);
   border-radius: 50% 50% 50% 50% / 50% 50% 60% 60%;
 }
 
@@ -7955,8 +7665,8 @@ footer a {
     circle at center,
     transparent,
     transparent 2.5rem,
-    #946651 2.5rem,
-    #946651 5rem
+    var(--rudolph-body-dark) 2.5rem,
+    var(--rudolph-body-dark) 5rem
   );
   background-position: 0 0.2rem;
   transform: scaleX(1.1) rotate(45deg) scaleX(1.1) scale(0.9);
@@ -7968,7 +7678,7 @@ footer a {
   top: 1.5rem;
   width: 5rem;
   height: 2rem;
-  background: #9d6b53;
+  background: var(--rudolph-body);
   border-radius: 50% 50% 60% 40% / 50% 40% 40% 50%;
   transform: rotate(-10deg) scale(0.8);
 }
@@ -7981,7 +7691,7 @@ footer a {
   top: 0.5rem;
   width: 3rem;
   height: 1.2rem;
-  background: #774936;
+  background: var(--rudolph-ear);
   border-radius: 50% 50% 50% 40% / 50% 40% 60% 50%;
 }
 
@@ -7998,7 +7708,7 @@ footer a {
   width: 0.6rem;
   height: 0.8rem;
   border-radius: 50%;
-  background-color: #432818;
+  background-color: var(--rudolph-eye);
   transform: rotate(10deg);
 }
 
@@ -8014,7 +7724,7 @@ footer a {
   width: 4.6rem;
   height: 3.6rem;
   border-radius: 50%;
-  background-color: #8c6351;
+  background-color: var(--rudolph-nose);
 }
 
 .reindeer .nose::before {
@@ -8026,7 +7736,7 @@ footer a {
   width: 3.4rem;
   height: 2.6rem;
   border-radius: 50%;
-  background-color: #690500;
+  background-color: var(--rudolph-nose-red);
 }
 
 .reindeer .nose::after {
@@ -8047,7 +7757,7 @@ footer a {
   left: 5rem;
   width: 6rem;
   height: 6rem;
-  background: #9d6b53;
+  background: var(--rudolph-body);
   border-radius: 3rem 3rem 0 0 / 4rem 4rem 0 0;
 }
 
@@ -8057,7 +7767,7 @@ footer a {
   position: absolute;
   width: 3rem;
   height: 4rem;
-  background-color: #ede0d4;
+  background-color: var(--rudolph-belly);
   border-radius: 50%;
   top: 0rem;
   left: 1.5rem;
@@ -8074,8 +7784,8 @@ footer a {
     circle at 100% 0,
     transparent,
     transparent 1.15rem,
-    #432818 1.2rem,
-    #432818 2rem,
+    var(--rudolph-leg) 1.2rem,
+    var(--rudolph-leg) 2rem,
     transparent 2.05rem
   );
   transform: scaleX(0.7) rotate(10deg);
@@ -8089,7 +7799,7 @@ footer a {
   left: 1.6rem;
   width: 0.8rem;
   height: 0.8rem;
-  background-color: #432818;
+  background-color: var(--rudolph-leg);
   border-radius: 50%;
 }
 
@@ -8115,7 +7825,7 @@ footer a {
   left: 0.3rem;
   width: 2rem;
   height: 3.4rem;
-  background-color: #9d6b53;
+  background-color: var(--rudolph-body);
   border-radius: 50%;
   transform: rotate(-20deg);
 }
@@ -8128,7 +7838,7 @@ footer a {
   right: 0.3rem;
   width: 2rem;
   height: 3.4rem;
-  background-color: #9d6b53;
+  background-color: var(--rudolph-body);
   border-radius: 50%;
   transform: rotate(20deg);
 }
@@ -8137,7 +7847,7 @@ footer a {
   position: absolute;
   width: 3rem;
   height: 1.5rem;
-  background-color: #432818;
+  background-color: var(--rudolph-leg);
   border-radius: 1.5rem 1.5rem 0 0;
   top: 4.5rem;
 }
@@ -8161,6 +7871,15 @@ footer a {
 }
 
 .christmas-tree-container {
+  --christmas-tree-green-1: #047a07;
+  --christmas-tree-green-2: #0b6e4f;
+  --christmas-tree-green-3: #08a045;
+  --christmas-tree-green-4: #073b3a;
+  --christmas-tree-ornament-1: #ffba08;
+  --christmas-tree-ornament-2: #4cc9f0;
+  --christmas-tree-ornament-3: #ffffff;
+  --christmas-tree-ornament-4: #f72585;
+
   perspective: 400px;
   position: relative;
   width: 340px;
@@ -8180,8 +7899,8 @@ footer a {
   width: 100px;
   height: 100px;
   background: radial-gradient(circle at center, white, transparent 50px);
-  -webkit-animation: christmas-tree-glow 3s infinite linear;
-  animation: christmas-tree-glow 3s infinite linear;
+  -webkit-animation: christmas-tree-glow 5s infinite linear;
+  animation: christmas-tree-glow 5s infinite linear;
 }
 
 .christmas-tree-container .shadow {
@@ -8236,18 +7955,18 @@ footer a {
 .christmas-tree .branch {
   position: absolute;
   border-radius: 5px;
-  background-color: #047a07;
+  background-color: var(--christmas-tree-green-1);
   transform-origin: center center;
 }
 
 .christmas-tree .branch:nth-child(3n + 2) {
-  background-color: #0b6e4f;
+  background-color: var(--christmas-tree-green-2);
 }
 .christmas-tree .branch:nth-child(3n + 1) {
-  background-color: #08a045;
+  background-color: var(--christmas-tree-green-3);
 }
 .christmas-tree .branch:nth-child(4n + 2) {
-  background-color: #073b3a;
+  background-color: var(--christmas-tree-green-4);
 }
 
 .christmas-tree .ct-ornament {
@@ -8255,19 +7974,19 @@ footer a {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #ffba08;
+  background-color: var(--christmas-tree-ornament-1);
   transform-origin: center center;
   transform-style: preserve-3d;
 }
 
 .christmas-tree .ct-ornament:nth-child(4n + 0) {
-  background-color: #4cc9f0;
+  background-color: var(--christmas-tree-ornament-2);
 }
 .christmas-tree .ct-ornament:nth-child(4n + 1) {
-  background-color: #ffffff;
+  background-color: var(--christmas-tree-ornament-3);
 }
 .christmas-tree .ct-ornament:nth-child(4n + 2) {
-  background-color: #f72585;
+  background-color: var(--christmas-tree-ornament-4);
 }
 
 .christmas-tree .star {
@@ -8340,46 +8059,30 @@ footer a {
 
 @-webkit-keyframes christmas-tree-glow {
   0% {
-    transform: scale(1);
+    transform: scale(1.1);
     opacity: 0.15;
-  }
-  25% {
-    transform: scale(0.8);
-    opacity: 0.25;
   }
   50% {
-    transform: scale(1);
-    opacity: 0.15;
-  }
-  75% {
-    transform: scale(1.1);
-    opacity: 0.1;
+    transform: scale(0.7);
+    opacity: 0.25;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.1);
     opacity: 0.15;
   }
 }
 
 @keyframes christmas-tree-glow {
   0% {
-    transform: scale(1);
+    transform: scale(1.1);
     opacity: 0.15;
-  }
-  25% {
-    transform: scale(0.8);
-    opacity: 0.25;
   }
   50% {
-    transform: scale(1);
-    opacity: 0.15;
-  }
-  75% {
-    transform: scale(1.1);
-    opacity: 0.1;
+    transform: scale(0.7);
+    opacity: 0.25;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.1);
     opacity: 0.15;
   }
 }
