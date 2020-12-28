@@ -1,0 +1,7 @@
+spec:
+  name: sample-html
+  static_sites:
+    - git:
+        branch: main
+        repo_clone_url: https://github.com/digitalocean/sample-html.git
+      name: sample-html
